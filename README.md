@@ -45,8 +45,8 @@ Before running FinanceMate, ensure you have the following installed:
    npm install
 
 3. **Set up environment variables:**
-Create a .env file in the root directory.
-Add the following variables:
+   - Create a .env file in the root directory.
+   - Add the following variables:
    ```bash
    PORT=5000
    MONGO_URI=your_mongodb_connection_string
