@@ -1,83 +1,46 @@
-FinanceMate
-Overview
-This is a Fund Management System designed to help users manage their funds securely. The system provides features for user registration, login, and fund management, with additional security using JSON Web Tokens (JWT) for authentication. The backend is written in JavaScript (Node.js), uses MongoDB as the database, and is deployed on Render.
+# FinanceMate
 
-Features
-User Authentication:
+FinanceMate is a **Fund Management System** designed to help users securely manage their funds. It offers features for **user authentication, fund management, and transaction tracking**, ensuring security through **JSON Web Tokens (JWT)**. The backend is built with **Node.js**, uses **MongoDB** as its database, and is deployed on **Render**.
 
-Secure user registration and login using JWT.
+## 🚀 Features
 
-Password hashing for enhanced security.
+### 🔑 User Authentication
+- Secure **user registration** and **login** using **JWT**.
+- **Password hashing** for enhanced security with **bcrypt**.
 
-Fund Management:
+### 💰 Fund Management
+- Add, update, delete, and view funds.
+- Track **fund transactions** and monitor balances.
 
-Add, update, delete, and view funds.
+### 🔒 Security
+- **JWT-based authentication** to secure access to endpoints.
+- **Protected routes**, ensuring only authenticated users can manage funds.
 
-Track fund transactions and balances.
+## 🛠️ Tech Stack
 
-Security:
+**Backend:** Node.js, Express.js  
+**Database:** MongoDB  
+**Authentication:** JSON Web Tokens (JWT)  
+**Password Hashing:** bcrypt  
+**Deployment:** Render  
+**Environment Variables:** dotenv  
 
-JWT-based authentication for secure access to endpoints.
+## 📌 Prerequisites
 
-Protected routes to ensure only authenticated users can access fund management features.
+Before running FinanceMate, ensure you have the following installed:
+- **Node.js** (v16 or higher)
+- **npm** (Node Package Manager)
+- **MongoDB** (local or cloud-based, e.g., MongoDB Atlas)
+- **Postman** or any API testing tool (for testing endpoints)
 
-Database:
+## 📥 Installation
 
-MongoDB for storing user data and fund information.
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/your-username/fund-management-system.git
+   cd fund-management-system
 
-Deployment:
+2. Install dependencies:
 
-Backend deployed on Render for easy access and scalability.
-
-Technologies Used
-Backend: Node.js, Express.js
-
-Database: MongoDB
-
-Authentication: JSON Web Tokens (JWT)
-
-Password Hashing: bcrypt
-
-Deployment: Render
-
-Environment Variables: dotenv
-
-Prerequisites
-Before running the program, ensure you have the following installed:
-
-Node.js (v16 or higher)
-
-npm (Node Package Manager)
-
-MongoDB (local or cloud-based, e.g., MongoDB Atlas)
-
-Postman or any API testing tool (for testing endpoints)
-
-Installation
-Clone the repository:
-
-bash
-Copy
-git clone https://github.com/your-username/fund-management-system.git
-cd fund-management-system
-Install dependencies:
-
-bash
-Copy
-npm install
-Set up environment variables:
-
-Create a .env file in the root directory.
-
-Add the following variables:
-
-Copy
-PORT=5000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret_key
-Start the server:
-
-bash
-Copy
-npm start
-The server will run on http://localhost:5000 (or the port specified in .env).
+```bash
+   npm install
