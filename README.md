@@ -40,7 +40,18 @@ Before running FinanceMate, ensure you have the following installed:
    git clone https://github.com/your-username/fund-management-system.git
    cd fund-management-system
 
-2. Install dependencies:
-
-```bash
+2. **Install dependencies:**
+   ```bash
    npm install
+
+3. **Set up environment variables:**
+Create a .env file in the root directory.
+Add the following variables:
+   ```bash
+   PORT=5000
+   MONGO_URI=your_mongodb_connection_string
+   JWT_SECRET=your_jwt_secret_key
+
+4. **Start the server:**
+   ```bash
+   npm start
