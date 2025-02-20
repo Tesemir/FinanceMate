@@ -30,7 +30,7 @@ const addRecord = async (req, res) => {
 };
 
 const getRecords = async (req, res) => {
-  const records = await Record.find({ user: req.user.userId });
+  const records = await Record.find({ userId: req.user.userId });
   res.status(200).json(records);
 };
 
