@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');  // Import jsonwebtoken
-const User = require('../models/userModel'); // Make sure the path to the User model is correct
+const jwt = require('jsonwebtoken'); 
+const User = require('../models/userModel'); 
 
 // Register a user
 exports.register = async (req, res) => {
@@ -42,7 +42,6 @@ exports.login = async (req, res) => {
       return res.status(400).json({ message: 'Invalid email or password' });
     }
 
-    // Generate a JWT token after successful login
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
     res.status(200).json({
@@ -52,7 +51,7 @@ exports.login = async (req, res) => {
         name: user.name,
         email: user.email,
       },
-      token, // Send the token in the response
+      token, 
     });
   } catch (error) {
     res.status(500).json({ message: 'Server error', error });

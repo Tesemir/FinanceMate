@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const userRoutes = require("./routes/userRoutes");
 const recordRoutes = require("./routes/recordRoutes");
+const budgetRoutes = require("./routes/budgetRoutes");
 
 dotenv.config();
 
@@ -14,8 +15,9 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
-app.use("/api/users", userRoutes); // Register user routes
-app.use("/api/records", recordRoutes); // Register record routes
+app.use("/api/users", userRoutes); 
+app.use("/api/records", recordRoutes); 
+app.use("/api/budgets", budgetRoutes);
 
 // MongoDB connection
 mongoose.connect(process.env.MONGO_URI)

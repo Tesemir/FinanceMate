@@ -1,23 +1,20 @@
 const Record = require("../models/recordModel");
 
 const addRecord = async (req, res) => {
-  const { type, amount, description, category } = req.body; // Add category to body fields
+  const { type, amount, category } = req.body; 
 
-  // Ensure all required fields are present
   if (!type || !amount || !category) {
     return res.status(400).json({ message: 'Type, amount, and category are required.' });
   }
 
-  // Ensure user is authenticated and userId is set
   if (!req.user || !req.user.userId) {
     return res.status(401).json({ message: 'User is not authenticated.' });
   }
 
   const newRecord = new Record({
-    userId: req.user.userId, // Set userId from the JWT token
+    userId: req.user.userId, 
     type,
     amount,
-    description,
     category,
   });
 
@@ -29,9 +26,17 @@ const addRecord = async (req, res) => {
   }
 };
 
-const getRecords = async (req, res) => {
-  const records = await Record.find({ userId: req.user.userId });
-  res.status(200).json(records);
+const getUserRecords = async (req, res) => {
+  try {
+    const records = await Record.find({ userId: req.user.userId })
+      .populate("userId", "name email") 
+      .sort({ date: -1 }) 
+      .limit(10); 
+
+    res.status(200).json(records);
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error });
+  }
 };
 
 const updateRecord = async (req, res) => {
@@ -53,4 +58,4 @@ const deleteRecord = async (req, res) => {
   res.status(200).json({ message: "Record deleted successfully" });
 };
 
-module.exports = { addRecord, getRecords, updateRecord, deleteRecord };
+module.exports = { addRecord, getUserRecords, updateRecord, deleteRecord };

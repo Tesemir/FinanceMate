@@ -1,11 +1,11 @@
 const express = require("express");
-const { addRecord, getRecords, updateRecord, deleteRecord } = require("../controllers/recordController");
+const { addRecord, getUserRecords, updateRecord, deleteRecord } = require("../controllers/recordController");
 const authenticateToken = require("../controllers/authMiddleware");
 
 const router = express.Router();
 
 router.post("/", authenticateToken, addRecord);
-router.get("/", authenticateToken, getRecords);
+router.get("/", authenticateToken, getUserRecords);
 router.put("/:id", authenticateToken, updateRecord);
 router.delete("/:id", authenticateToken, deleteRecord);
 
