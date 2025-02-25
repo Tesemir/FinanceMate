@@ -1,0 +1,36 @@
+<h2>Your Expense Records</h2>
+<ul id="recordList"></ul>
+
+<script>
+async function fetchRecords() {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+        alert("You need to log in first!");
+        window.location.href = "login.html";
+        return;
+    }
+
+    try {
+        const response = await fetch("http://localhost:5000/api/records", {
+            method: "GET",
+            headers: { "Authorization": `Bearer ${token}` },
+        });
+
+        const records = await response.json();
+        const recordList = document.getElementById("recordList");
+
+        recordList.innerHTML = "";
+        records.forEach(record => {
+            const li = document.createElement("li");
+            li.textContent = `${record.category}: $${record.amount} (${record.type})`;
+            recordList.appendChild(li);
+        });
+    } catch (error) {
+        console.error("Error:", error);
+        alert("Failed to fetch records.");
+    }
+}
+
+fetchRecords();
+</script>

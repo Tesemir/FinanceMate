@@ -20,7 +20,7 @@ app.use("/api/records", recordRoutes);
 app.use("/api/budgets", budgetRoutes);
 
 // MongoDB connection
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect(process.env.MONGO_URI || "mongodb://localhost:27017/financeMate")
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.log(err));
 
