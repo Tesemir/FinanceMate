@@ -13,7 +13,7 @@ function showUserSection() {
   document.getElementById('userSection').style.display = 'block';
 }
 
-// Login the user
+
 async function loginUser() {
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
@@ -27,11 +27,15 @@ async function loginUser() {
   const data = await response.json();
   if (response.ok) {
     currentToken = data.token;
+    localStorage.setItem('token', currentToken); // Сохранение токена
     showUserSection();
+    showRecordHistory(); // Показываем записи
   } else {
     alert(data.message);
   }
 }
+
+
 
 // Register the user
 async function registerUser() {
@@ -157,7 +161,24 @@ async function addRecord() {
   }
 }
 
-// Show the record history
+
+
+async function deleteRecord(recordId) {
+  const response = await fetch(`${apiUrl}/records/${recordId}`, {
+    method: 'DELETE',
+    headers: {
+      'Authorization': `Bearer ${currentToken}`,
+    }
+  });
+
+  const data = await response.json();
+  if (response.ok) {
+    showRecordHistory(); // Обновление списка записей
+  } else {
+    alert(data.message);
+  }
+}
+
 async function showRecordHistory() {
   const response = await fetch(`${apiUrl}/records`, {
     method: 'GET',
@@ -172,10 +193,29 @@ async function showRecordHistory() {
 
   data.forEach(record => {
     const li = document.createElement('li');
-    li.innerHTML = `${record.category}: $${record.amount} (${record.type})`;
+    li.innerHTML = `${record.category}: $${record.amount} (${record.type}) 
+      <button onclick="deleteRecord('${record._id}')">Delete</button>`;
     recordItems.appendChild(li);
   });
 
   document.getElementById('recordForm').style.display = 'none';
   document.getElementById('recordHistory').style.display = 'block';
 }
+
+// Проверка, есть ли сохраненный токен
+window.onload = function () {
+  currentToken = localStorage.getItem('token');
+  if (currentToken) {
+    showUserSection();
+    showRecordHistory(); // Если токен есть, показываем записи
+  }
+};
+
+// Функция выхода
+function logoutUser() {
+  localStorage.removeItem('token'); // Удаляем токен
+  currentToken = '';
+  document.getElementById('authSection').style.display = 'block';
+  document.getElementById('userSection').style.display = 'none';
+}
+

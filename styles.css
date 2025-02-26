@@ -1,149 +1,84 @@
-/* Global Styles */
+/* Общий стиль */
 body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f4f4f9;
+  font-family: Arial, sans-serif;
+  background: #f4f4f9;
   color: #333;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/* Секция аутентификации */
+#authSection {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 h1, h2 {
-  color: #4CAF50;
+  color: #222;
 }
 
-button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 12px 20px;
-  border: none;
+/* Поля ввода */
+input, select, button {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
   border-radius: 5px;
-  font-size: 16px;
+  border: 1px solid #ddd;
+}
+
+/* Кнопки */
+button {
+  background: #007bff;
+  color: white;
+  border: none;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: 0.3s;
 }
 
 button:hover {
-  background-color: #45a049;
+  background: #0056b3;
 }
 
-input[type="email"],
-input[type="password"],
-input[type="text"],
-input[type="number"],
-select {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 10px 0;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-sizing: border-box;
-  font-size: 16px;
-}
-
-form {
-  background-color: #fff;
-  padding: 30px;
-  margin: 20px auto;
-  width: 100%;
-  max-width: 500px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-/* Container for the forms and sections */
-#authSection, #userSection {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
+/* Пользовательский интерфейс */
 #userSection {
-  display: none;
-}
-
-/* Add spacing and smooth transitions */
-#budgetForm, #recordForm, #recordHistory, #budgetList {
-  display: none;
-}
-
-#budgetList {
+  width: 90%;
+  max-width: 600px;
+  background: white;
   padding: 20px;
-  background-color: #fff;
-  margin-top: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
-#budgetItems li, #recordItems li {
-  list-style-type: none;
-  background-color: #fafafa;
-  padding: 12px;
-  margin: 8px 0;
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background: #eee;
+  padding: 10px;
+  margin: 5px 0;
   border-radius: 5px;
-  border: 1px solid #ddd;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: background-color 0.3s ease;
 }
 
-#budgetItems li:hover, #recordItems li:hover {
-  background-color: #e6f7e6;
+li button {
+  background: red;
+  padding: 5px 10px;
+  font-size: 12px;
 }
 
-button.delete-btn {
-  background-color: #f44336;
-  padding: 8px 16px;
-}
-
-button.delete-btn:hover {
-  background-color: #e53935;
-}
-
-button.edit-btn {
-  background-color: #ff9800;
-  padding: 8px 16px;
-}
-
-button.edit-btn:hover {
-  background-color: #fb8c00;
-}
-
-/* Style for forms and buttons when shown */
-form input, form button {
-  width: 100%;
-}
-
-#budgetList, #recordHistory {
-  display: block;
-}
-
-/* Header Styling */
-h2 {
-  text-align: center;
-  color: #333;
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
-/* Add some spacing around the sections */
-section {
-  margin: 40px 0;
-}
-
-/* Responsive design */
-@media (max-width: 600px) {
-  button, input {
-    width: 100%;
-    margin-top: 10px;
-  }
-
-  form {
-    padding: 20px;
-  }
+li button:hover {
+  background: darkred;
 }
